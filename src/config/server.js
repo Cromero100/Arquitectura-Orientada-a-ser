@@ -1,6 +1,7 @@
 import express  from "express";
 import { enviroment } from "./default.js";
 import route from "../routers/index.route.js";
+import PgConnection from "../services/pgConnection.service.js";
 
 export default class Server{
     constructor(){
@@ -8,8 +9,8 @@ export default class Server{
         this.port = enviroment.port
     }
 
-    connectionDb(){
-
+    async connectionDb(){
+        new PgConnection()
     }
     middlewares(){
         this.app.use(express.json())
